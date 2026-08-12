@@ -1,0 +1,222 @@
+{
+  "_note": "SYNTHETIC MOCK DATA — prototype only. No real usage logs, permissions, audit records, or PII. Numbers are illustrative and internally consistent so reviewers can validate FR/US behavior.",
+  "scenarios": {
+    "normal": {
+      "7d": {
+        "meta": {
+          "lastAggregatedAt": "2026-08-12T09:00:00+09:00",
+          "aggregating": false,
+          "dataGaps": ["インシデント対応支援 Agent の 8/9〜8/10 分の実行ログが一部欠損しています。"]
+        },
+        "summary": {
+          "activeAiUsers": 402,
+          "targetUsers": 1200,
+          "adoptionRate": 0.335,
+          "aiActionsInPeriod": 4890,
+          "agentRunsTotal": 1610,
+          "agentCounts": { "enabled": 34, "disabled": 7, "total": 41 },
+          "previousAdoptionRate": 0.301,
+          "wauTrend": [
+            { "date": "2026-07-20", "value": 356 },
+            { "date": "2026-07-27", "value": 372 },
+            { "date": "2026-08-03", "value": 389 },
+            { "date": "2026-08-10", "value": 402 }
+          ],
+          "mauTrend": [
+            { "date": "2026-06-01", "value": 560 },
+            { "date": "2026-07-01", "value": 612 },
+            { "date": "2026-08-01", "value": 645 }
+          ]
+        },
+        "departments": [
+          { "id": "sales", "name": "営業部", "activeUsers": 96, "targetUsers": 260, "adoptionRate": 0.369, "aiActions": 980 },
+          { "id": "marketing", "name": "マーケティング部", "activeUsers": 62, "targetUsers": 140, "adoptionRate": 0.443, "aiActions": 820 },
+          { "id": "engineering", "name": "エンジニアリング部", "activeUsers": 150, "targetUsers": 320, "adoptionRate": 0.469, "aiActions": 2200 },
+          { "id": "cs", "name": "カスタマーサクセス部", "activeUsers": 55, "targetUsers": 180, "adoptionRate": 0.306, "aiActions": 520 },
+          { "id": "corporate", "name": "コーポレート部", "activeUsers": 33, "targetUsers": 220, "adoptionRate": 0.15, "aiActions": 320 },
+          { "id": "unassigned", "name": "未分類", "activeUsers": 6, "targetUsers": 80, "adoptionRate": 0.075, "aiActions": 50, "unassigned": true }
+        ],
+        "agents": [
+          { "id": "ag-knowledge", "name": "全社ナレッジ検索", "creator": "情シス 佐藤", "departmentId": "unassigned", "runs": 410, "users": 180, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "workspace_wide", "hasExternalConnections": false, "usesMcp": false },
+          { "id": "ag-eng-review", "name": "コードレビュー支援", "creator": "エンジニアリング 山本", "departmentId": "engineering", "runs": 388, "users": 74, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "broad", "hasExternalConnections": false, "usesMcp": true },
+          { "id": "ag-incident", "name": "インシデント対応支援", "creator": "SRE 中村", "departmentId": "engineering", "runs": 205, "users": 41, "lastUsedDate": "2026-08-11", "enabled": true, "accessScope": "workspace_wide", "hasExternalConnections": true, "usesMcp": true, "dataIncomplete": true },
+          { "id": "ag-sales-draft", "name": "営業提案ドラフト生成", "creator": "営業 鈴木", "departmentId": "sales", "runs": 176, "users": 48, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "scoped", "hasExternalConnections": true, "usesMcp": false },
+          { "id": "ag-cs-reply", "name": "顧客サポート回答支援", "creator": "CS 高橋", "departmentId": "cs", "runs": 132, "users": 29, "lastUsedDate": "2026-08-10", "enabled": true, "accessScope": "scoped", "hasExternalConnections": true, "usesMcp": false },
+          { "id": "ag-mtg", "name": "議事録要約Bot", "creator": "コーポレート 伊藤", "departmentId": "corporate", "runs": 68, "users": 22, "lastUsedDate": "2026-08-09", "enabled": true, "accessScope": "scoped", "hasExternalConnections": false, "usesMcp": false },
+          { "id": "ag-finance", "name": "財務レポート集計", "creator": "財務 渡辺", "departmentId": "corporate", "runs": 21, "users": 5, "lastUsedDate": "2026-08-05", "enabled": true, "accessScope": "broad", "hasExternalConnections": true, "usesMcp": false },
+          { "id": "ag-hiring", "name": "採用スクリーニング補助", "creator": "人事 小林", "departmentId": "corporate", "runs": 4, "users": 2, "lastUsedDate": "2026-06-28", "enabled": false, "accessScope": "broad", "hasExternalConnections": false, "usesMcp": false }
+        ],
+        "permissions": {
+          "workspaceWideAgents": 3,
+          "broadAccessAgents": 5,
+          "externalIntegrationAgents": 6,
+          "mcpAgents": 4,
+          "adminCount": 6,
+          "guestExternalAiUsage": true,
+          "guestExternalActiveUsers": 3
+        },
+        "governanceSignals": [
+          { "id": "sig-workspace-wide", "name": "Workspace全体公開のAgent", "description": "Workspace全体に公開されているCustom Agentが存在します。公開範囲の妥当性を確認してください。", "count": 3, "severity": "attention" },
+          { "id": "sig-external", "name": "外部連携を持つAgent", "description": "外部サービス連携を持つAgentがあります。連携先と付与権限を確認してください。", "count": 6, "severity": "info" },
+          { "id": "sig-idle-broad", "name": "長期未利用かつ広範囲アクセスのAgent", "description": "30日以上未利用で、広範囲アクセスを持つAgentがあります。棚卸し候補です。", "count": 2, "severity": "attention" },
+          { "id": "sig-guest-ai", "name": "Guest/ExternalによるAI利用", "description": "Guest / External ユーザーによるAI利用が検出されました。想定内かご確認ください。", "count": 3, "severity": "attention" }
+        ]
+      },
+      "30d": {
+        "meta": {
+          "lastAggregatedAt": "2026-08-12T09:00:00+09:00",
+          "aggregating": false,
+          "dataGaps": ["インシデント対応支援 Agent の 8/9〜8/10 分の実行ログが一部欠損しています。"]
+        },
+        "summary": {
+          "activeAiUsers": 645,
+          "targetUsers": 1200,
+          "adoptionRate": 0.5375,
+          "aiActionsInPeriod": 18760,
+          "agentRunsTotal": 6120,
+          "agentCounts": { "enabled": 34, "disabled": 7, "total": 41 },
+          "previousAdoptionRate": 0.512,
+          "wauTrend": [
+            { "date": "2026-07-13", "value": 588 },
+            { "date": "2026-07-20", "value": 604 },
+            { "date": "2026-07-27", "value": 619 },
+            { "date": "2026-08-03", "value": 631 },
+            { "date": "2026-08-10", "value": 645 }
+          ],
+          "mauTrend": [
+            { "date": "2026-06-01", "value": 560 },
+            { "date": "2026-07-01", "value": 612 },
+            { "date": "2026-08-01", "value": 645 }
+          ]
+        },
+        "departments": [
+          { "id": "sales", "name": "営業部", "activeUsers": 150, "targetUsers": 260, "adoptionRate": 0.577, "aiActions": 3800 },
+          { "id": "marketing", "name": "マーケティング部", "activeUsers": 96, "targetUsers": 140, "adoptionRate": 0.686, "aiActions": 3200 },
+          { "id": "engineering", "name": "エンジニアリング部", "activeUsers": 224, "targetUsers": 320, "adoptionRate": 0.7, "aiActions": 8300 },
+          { "id": "cs", "name": "カスタマーサクセス部", "activeUsers": 92, "targetUsers": 180, "adoptionRate": 0.511, "aiActions": 2100 },
+          { "id": "corporate", "name": "コーポレート部", "activeUsers": 71, "targetUsers": 220, "adoptionRate": 0.323, "aiActions": 1200 },
+          { "id": "unassigned", "name": "未分類", "activeUsers": 12, "targetUsers": 80, "adoptionRate": 0.15, "aiActions": 160, "unassigned": true }
+        ],
+        "agents": [
+          { "id": "ag-knowledge", "name": "全社ナレッジ検索", "creator": "情シス 佐藤", "departmentId": "unassigned", "runs": 1520, "users": 372, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "workspace_wide", "hasExternalConnections": false, "usesMcp": false },
+          { "id": "ag-eng-review", "name": "コードレビュー支援", "creator": "エンジニアリング 山本", "departmentId": "engineering", "runs": 1410, "users": 118, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "broad", "hasExternalConnections": false, "usesMcp": true },
+          { "id": "ag-incident", "name": "インシデント対応支援", "creator": "SRE 中村", "departmentId": "engineering", "runs": 812, "users": 63, "lastUsedDate": "2026-08-11", "enabled": true, "accessScope": "workspace_wide", "hasExternalConnections": true, "usesMcp": true, "dataIncomplete": true },
+          { "id": "ag-sales-draft", "name": "営業提案ドラフト生成", "creator": "営業 鈴木", "departmentId": "sales", "runs": 690, "users": 121, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "scoped", "hasExternalConnections": true, "usesMcp": false },
+          { "id": "ag-cs-reply", "name": "顧客サポート回答支援", "creator": "CS 高橋", "departmentId": "cs", "runs": 505, "users": 74, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "scoped", "hasExternalConnections": true, "usesMcp": false },
+          { "id": "ag-mtg", "name": "議事録要約Bot", "creator": "コーポレート 伊藤", "departmentId": "corporate", "runs": 268, "users": 61, "lastUsedDate": "2026-08-11", "enabled": true, "accessScope": "scoped", "hasExternalConnections": false, "usesMcp": false },
+          { "id": "ag-finance", "name": "財務レポート集計", "creator": "財務 渡辺", "departmentId": "corporate", "runs": 96, "users": 12, "lastUsedDate": "2026-08-08", "enabled": true, "accessScope": "broad", "hasExternalConnections": true, "usesMcp": false },
+          { "id": "ag-hiring", "name": "採用スクリーニング補助", "creator": "人事 小林", "departmentId": "corporate", "runs": 19, "users": 6, "lastUsedDate": "2026-06-28", "enabled": false, "accessScope": "broad", "hasExternalConnections": false, "usesMcp": false }
+        ],
+        "permissions": {
+          "workspaceWideAgents": 3,
+          "broadAccessAgents": 5,
+          "externalIntegrationAgents": 6,
+          "mcpAgents": 4,
+          "adminCount": 6,
+          "guestExternalAiUsage": true,
+          "guestExternalActiveUsers": 5
+        },
+        "governanceSignals": [
+          { "id": "sig-workspace-wide", "name": "Workspace全体公開のAgent", "description": "Workspace全体に公開されているCustom Agentが存在します。公開範囲の妥当性を確認してください。", "count": 3, "severity": "attention" },
+          { "id": "sig-external", "name": "外部連携を持つAgent", "description": "外部サービス連携を持つAgentがあります。連携先と付与権限を確認してください。", "count": 6, "severity": "info" },
+          { "id": "sig-idle-broad", "name": "長期未利用かつ広範囲アクセスのAgent", "description": "30日以上未利用で、広範囲アクセスを持つAgentがあります。棚卸し候補です。", "count": 2, "severity": "attention" },
+          { "id": "sig-guest-ai", "name": "Guest/ExternalによるAI利用", "description": "Guest / External ユーザーによるAI利用が検出されました。想定内かご確認ください。", "count": 5, "severity": "attention" }
+        ]
+      },
+      "90d": {
+        "meta": {
+          "lastAggregatedAt": "2026-08-12T09:00:00+09:00",
+          "aggregating": false,
+          "dataGaps": ["インシデント対応支援 Agent の 8/9〜8/10 分の実行ログが一部欠損しています。"]
+        },
+        "summary": {
+          "activeAiUsers": 812,
+          "targetUsers": 1200,
+          "adoptionRate": 0.6767,
+          "aiActionsInPeriod": 48210,
+          "agentRunsTotal": 15320,
+          "agentCounts": { "enabled": 34, "disabled": 7, "total": 41 },
+          "previousAdoptionRate": 0.611,
+          "wauTrend": [
+            { "date": "2026-05-18", "value": 690 },
+            { "date": "2026-06-01", "value": 712 },
+            { "date": "2026-06-15", "value": 741 },
+            { "date": "2026-06-29", "value": 763 },
+            { "date": "2026-07-13", "value": 781 },
+            { "date": "2026-07-27", "value": 799 },
+            { "date": "2026-08-10", "value": 812 }
+          ],
+          "mauTrend": [
+            { "date": "2026-05-01", "value": 505 },
+            { "date": "2026-06-01", "value": 560 },
+            { "date": "2026-07-01", "value": 612 },
+            { "date": "2026-08-01", "value": 812 }
+          ]
+        },
+        "departments": [
+          { "id": "sales", "name": "営業部", "activeUsers": 190, "targetUsers": 260, "adoptionRate": 0.731, "aiActions": 9800 },
+          { "id": "marketing", "name": "マーケティング部", "activeUsers": 118, "targetUsers": 140, "adoptionRate": 0.843, "aiActions": 8200 },
+          { "id": "engineering", "name": "エンジニアリング部", "activeUsers": 268, "targetUsers": 320, "adoptionRate": 0.8375, "aiActions": 21300 },
+          { "id": "cs", "name": "カスタマーサクセス部", "activeUsers": 121, "targetUsers": 180, "adoptionRate": 0.672, "aiActions": 5400 },
+          { "id": "corporate", "name": "コーポレート部", "activeUsers": 96, "targetUsers": 220, "adoptionRate": 0.436, "aiActions": 3100 },
+          { "id": "unassigned", "name": "未分類", "activeUsers": 19, "targetUsers": 80, "adoptionRate": 0.2375, "aiActions": 410, "unassigned": true }
+        ],
+        "agents": [
+          { "id": "ag-knowledge", "name": "全社ナレッジ検索", "creator": "情シス 佐藤", "departmentId": "unassigned", "runs": 3820, "users": 512, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "workspace_wide", "hasExternalConnections": false, "usesMcp": false },
+          { "id": "ag-eng-review", "name": "コードレビュー支援", "creator": "エンジニアリング 山本", "departmentId": "engineering", "runs": 3510, "users": 201, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "broad", "hasExternalConnections": false, "usesMcp": true },
+          { "id": "ag-incident", "name": "インシデント対応支援", "creator": "SRE 中村", "departmentId": "engineering", "runs": 2040, "users": 88, "lastUsedDate": "2026-08-11", "enabled": true, "accessScope": "workspace_wide", "hasExternalConnections": true, "usesMcp": true, "dataIncomplete": true },
+          { "id": "ag-sales-draft", "name": "営業提案ドラフト生成", "creator": "営業 鈴木", "departmentId": "sales", "runs": 1760, "users": 168, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "scoped", "hasExternalConnections": true, "usesMcp": false },
+          { "id": "ag-cs-reply", "name": "顧客サポート回答支援", "creator": "CS 高橋", "departmentId": "cs", "runs": 1290, "users": 102, "lastUsedDate": "2026-08-12", "enabled": true, "accessScope": "scoped", "hasExternalConnections": true, "usesMcp": false },
+          { "id": "ag-mtg", "name": "議事録要約Bot", "creator": "コーポレート 伊藤", "departmentId": "corporate", "runs": 690, "users": 132, "lastUsedDate": "2026-08-11", "enabled": true, "accessScope": "scoped", "hasExternalConnections": false, "usesMcp": false },
+          { "id": "ag-finance", "name": "財務レポート集計", "creator": "財務 渡辺", "departmentId": "corporate", "runs": 240, "users": 21, "lastUsedDate": "2026-08-08", "enabled": true, "accessScope": "broad", "hasExternalConnections": true, "usesMcp": false },
+          { "id": "ag-hiring", "name": "採用スクリーニング補助", "creator": "人事 小林", "departmentId": "corporate", "runs": 58, "users": 14, "lastUsedDate": "2026-06-28", "enabled": false, "accessScope": "broad", "hasExternalConnections": false, "usesMcp": false }
+        ],
+        "permissions": {
+          "workspaceWideAgents": 3,
+          "broadAccessAgents": 5,
+          "externalIntegrationAgents": 6,
+          "mcpAgents": 4,
+          "adminCount": 6,
+          "guestExternalAiUsage": true,
+          "guestExternalActiveUsers": 7
+        },
+        "governanceSignals": [
+          { "id": "sig-workspace-wide", "name": "Workspace全体公開のAgent", "description": "Workspace全体に公開されているCustom Agentが存在します。公開範囲の妥当性を確認してください。", "count": 3, "severity": "attention" },
+          { "id": "sig-external", "name": "外部連携を持つAgent", "description": "外部サービス連携を持つAgentがあります。連携先と付与権限を確認してください。", "count": 6, "severity": "info" },
+          { "id": "sig-idle-broad", "name": "長期未利用かつ広範囲アクセスのAgent", "description": "30日以上未利用で、広範囲アクセスを持つAgentがあります。棚卸し候補です。", "count": 2, "severity": "attention" },
+          { "id": "sig-guest-ai", "name": "Guest/ExternalによるAI利用", "description": "Guest / External ユーザーによるAI利用が検出されました。想定内かご確認ください。", "count": 7, "severity": "attention" }
+        ]
+      }
+    },
+    "empty": {
+      "meta": {
+        "lastAggregatedAt": "2026-08-12T09:00:00+09:00",
+        "aggregating": false,
+        "dataGaps": ["この期間・スコープに該当する利用データがまだありません。"]
+      },
+      "summary": {
+        "activeAiUsers": 0,
+        "targetUsers": 0,
+        "adoptionRate": 0,
+        "aiActionsInPeriod": 0,
+        "agentRunsTotal": 0,
+        "agentCounts": { "enabled": 0, "disabled": 0, "total": 0 },
+        "previousAdoptionRate": 0,
+        "wauTrend": [],
+        "mauTrend": []
+      },
+      "departments": [],
+      "agents": [],
+      "permissions": {
+        "workspaceWideAgents": 0,
+        "broadAccessAgents": 0,
+        "externalIntegrationAgents": 0,
+        "mcpAgents": 0,
+        "adminCount": 0,
+        "guestExternalAiUsage": false,
+        "guestExternalActiveUsers": 0
+      },
+      "governanceSignals": []
+    }
+  }
+}
