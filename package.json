@@ -1,0 +1,14 @@
+{
+  "name": "moni",
+  "version": "1.0.0",
+  "description": "Capture your current location from the browser and log it to a Notion database",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "setup": "node --env-file-if-exists=.env setup.js"
+  }
+}
