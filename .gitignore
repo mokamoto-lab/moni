@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.transcript-loader-state.json
+inbox/*
+!inbox/.gitkeep
+*.tsbuildinfo
+.DS_Store
