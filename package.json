@@ -1,0 +1,26 @@
+{
+  "name": "moni",
+  "version": "1.0.0",
+  "description": "Watch a local folder and upsert transcript files into a Notion database",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "sync": "node --import tsx src/cli.ts sync",
+    "watch": "node --import tsx src/cli.ts watch",
+    "start": "node --import tsx src/cli.ts watch",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@notionhq/client": "^5.27.0",
+    "chokidar": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
