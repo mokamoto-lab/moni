@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ボムデュエル</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>ボムデュエル</h1>
+    <p>1台のキーボードで遊ぶ、2人対戦</p>
+  </header>
+
+  <main>
+    <section class="hud hud-p1" aria-label="プレイヤー1">
+      <h2><span class="swatch"></span>プレイヤー1</h2>
+      <p class="who">左・青</p>
+      <dl>
+        <div>
+          <dt>爆弾</dt>
+          <dd><strong id="p1-bomb">1</strong><span id="p1-bomb-left">あと 1</span></dd>
+        </div>
+        <div>
+          <dt>火力</dt>
+          <dd><strong id="p1-range">2</strong></dd>
+        </div>
+        <div>
+          <dt>スピード</dt>
+          <dd><strong id="p1-speed">3</strong><em id="p1-speed-label">普通</em></dd>
+        </div>
+      </dl>
+      <div class="controls">
+        <p>移動 <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></p>
+        <p>爆弾 <kbd>Space</kbd></p>
+      </div>
+    </section>
+
+    <div class="stage">
+      <canvas id="game" width="624" height="528" aria-label="ボムデュエルのステージ"></canvas>
+      <div id="overlay" class="overlay" hidden>
+        <div class="overlay-card" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+          <p class="eyebrow">ボムデュエル</p>
+          <h2 id="overlay-title"></h2>
+          <p id="overlay-sub"></p>
+          <button type="button" id="restart">もう一度あそぶ</button>
+          <p class="hint">Rキーでもう一度</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="hud hud-p2" aria-label="プレイヤー2">
+      <h2><span class="swatch"></span>プレイヤー2</h2>
+      <p class="who">右・赤</p>
+      <dl>
+        <div>
+          <dt>爆弾</dt>
+          <dd><strong id="p2-bomb">1</strong><span id="p2-bomb-left">あと 1</span></dd>
+        </div>
+        <div>
+          <dt>火力</dt>
+          <dd><strong id="p2-range">2</strong></dd>
+        </div>
+        <div>
+          <dt>スピード</dt>
+          <dd><strong id="p2-speed">3</strong><em id="p2-speed-label">普通</em></dd>
+        </div>
+      </dl>
+      <div class="controls">
+        <p>移動 <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></p>
+        <p>爆弾 <kbd>右Shift</kbd></p>
+      </div>
+    </section>
+
+    <footer class="legend-bar">
+      <ul class="legend">
+        <li>
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="#ff7a18"/>
+            <path d="M16 6c3.2 4.2 6.2 6.4 6.2 10.2a6.2 6.2 0 0 1-12.4 0C9.8 12.4 12.8 10.2 16 6z" fill="#fff6e6"/>
+          </svg>
+          火力アップ
+        </li>
+        <li>
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="#1db954"/>
+            <path d="M16 7l7 10h-4.2V25h-5.6V17H9z" fill="#f4fff7"/>
+          </svg>
+          スピードアップ
+        </li>
+        <li>
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="#9b4dff"/>
+            <path d="M16 25l-7-10h4.2V7h5.6v8H23z" fill="#faf5ff"/>
+          </svg>
+          スピードダウン
+        </li>
+        <li>
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="#f5c518"/>
+            <circle cx="14" cy="18" r="6" fill="#292524"/>
+            <path d="M18 12l4-4" stroke="#292524" stroke-width="2" stroke-linecap="round"/>
+            <path d="M23 8h4M25 6v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          爆弾追加
+        </li>
+      </ul>
+      <p class="rule">爆風は壁で止まる。置いた本人も当たる。アイテムは歩いて取る。</p>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
